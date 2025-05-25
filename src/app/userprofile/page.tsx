@@ -13,10 +13,13 @@ import {
 import { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import CourseCard from "@/components/CourseCard";
+import { UserLandingPage } from "@/components/UserLandingPage";
+import ContactForm from "@/components/ContactForm";
 
 export default function NavbarDemo() {
   const navItems = [
-    { name: "Courses", link: "#cour" },
+    { name: "Courses", link: "#courses" },
     { name: "Upcoming Classes", link: "#pricing" },
     { name: "Contact", link: "#contact" },
   ];
@@ -36,13 +39,13 @@ export default function NavbarDemo() {
           <div className="flex items-center gap-4 relative">
             {userLoggedIn ? (
               <div className="relative">
-
-
-
-                <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 ">
+                <button
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 "
+                >
                   <span className=" absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
                   <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
-                    <FaUserCircle className="text-lg " /> 
+                    <FaUserCircle className="text-lg " />
                     My Account
                   </span>
                 </button>
@@ -143,6 +146,17 @@ export default function NavbarDemo() {
             </div>
           </MobileNavMenu>
         </MobileNav>
+        {/* Kuch landing page type ka dena parega*/}
+        <UserLandingPage />
+        {/* <CourseCard/>*/}
+        <div id="courses" className="scroll-mt-24">
+          <CourseCard />
+        </div>
+
+        {/* Contact US */}
+        <div id="contact">
+              <ContactForm/>
+        </div>
       </Navbar>
     </div>
   );
