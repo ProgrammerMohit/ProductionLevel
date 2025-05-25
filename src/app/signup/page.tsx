@@ -3,6 +3,7 @@ import React from "react";
 import { Label } from "../../components/ui/label";
 import { Input } from "../../components/ui/input";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 import {
   IconBrandGithub,
   IconBrandGoogle,
@@ -10,11 +11,10 @@ import {
 import { motion } from "framer-motion";
 
 export default function SignupPage() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("Form submitted");
-  };
-
+  const router = useRouter();
+  const handleClick = ()=>{
+    router.push("/userprofile")
+  }
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -31,7 +31,7 @@ export default function SignupPage() {
         yet
       </p>
 
-      <form className="my-8" onSubmit={handleSubmit}>
+      <form className="my-8">
         <div className="mb-4 flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2">
           <LabelInputContainer>
             <Label htmlFor="firstname">First name</Label>
@@ -52,8 +52,9 @@ export default function SignupPage() {
         </LabelInputContainer>
 
         <button
+          onClick={handleClick}
           className="cursor-pointer group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset]"
-          type="submit"
+          type="button"
         >
           Sign up &rarr;
           <BottomGradient />
